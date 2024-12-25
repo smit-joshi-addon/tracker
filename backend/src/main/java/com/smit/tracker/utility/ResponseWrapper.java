@@ -6,9 +6,7 @@ public class ResponseWrapper<T> {
     private String message;
     private T data;
 
-    // Constructors
-    public ResponseWrapper() {
-    }
+    public ResponseWrapper() {}
 
     public ResponseWrapper(boolean success, String message, T data) {
         this.success = success;
@@ -16,7 +14,6 @@ public class ResponseWrapper<T> {
         this.data = data;
     }
 
-    // Static factory methods for convenience
     public static <T> ResponseWrapper<T> success(String message, T data) {
         return new ResponseWrapper<>(true, message, data);
     }
@@ -24,8 +21,7 @@ public class ResponseWrapper<T> {
     public static <T> ResponseWrapper<T> failure(String message) {
         return new ResponseWrapper<>(false, message, null);
     }
-
-    // Getters and Setters
+    
     public boolean isSuccess() {
         return success;
     }

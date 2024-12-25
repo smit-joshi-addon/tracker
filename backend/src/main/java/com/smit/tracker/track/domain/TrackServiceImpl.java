@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.locationtech.jts.geom.Point;
 import org.springframework.stereotype.Service;
 
-import com.smit.tracker.track.constants.AppConstants;
+import com.smit.tracker.track.constants.TrackConstants;
 import com.smit.tracker.track.domain.dto.TrackPoint;
 import com.smit.tracker.track.domain.dto.TrackPointData;
 import com.smit.tracker.utility.ResponseWrapper;
@@ -23,30 +23,25 @@ class TrackServiceImpl implements TrackService {
 
     @Override
     public ResponseWrapper<TrackPointData> save(TrackPoint track) {
-        // Create a Track object from the TrackPoint object
         Track newTrack = TrackMapper.toTrack(track);
-
-        // Save the Track object
         Track savedTrack = trackRepository.save(newTrack);
-
-        // Return the TrackPointData object
-        return ResponseWrapper.success(AppConstants.SUCCESS_MESSAGE,TrackMapper.fromTrack(savedTrack));
+        return ResponseWrapper.success(TrackConstants.SUCCESS_MESSAGE,TrackMapper.fromTrack(savedTrack));
     }
 
     @Override
     public ResponseWrapper<List<TrackPointData>> findAll(Double latitude, Double longitude) {
         Point point = TrackMapper.toPoint(latitude, longitude);
         List<TrackPointData> data =  trackRepository.findAllWithinRadius(point);
-        return ResponseWrapper.success(AppConstants.SUCCESS_MESSAGE, data);
+        return ResponseWrapper.success(TrackConstants.SUCCESS_MESSAGE, data);
     }
 
     @Override
     public ResponseWrapper<TrackPointData> findById(Long id) {
         Optional<Track> track = trackRepository.findById(id);
         if(track.isPresent()){
-            return ResponseWrapper.success(AppConstants.SUCCESS_MESSAGE, TrackMapper.fromTrack(track.get()));
+            return ResponseWrapper.success(TrackConstants.SUCCESS_MESSAGE, TrackMapper.fromTrack(track.get()));
         }
-        return ResponseWrapper.failure(AppConstants.ERROR_MESSAGE);
+        return ResponseWrapper.failure(TrackConstants.ERROR_MESSAGE);
     }
 
     @Override
