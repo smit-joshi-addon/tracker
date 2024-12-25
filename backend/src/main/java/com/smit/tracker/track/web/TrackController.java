@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/track")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 class TrackController {
 
     private final TrackService trackService;
