@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-sm-12">
+      <div class="form-check form-switch d-flex justify-content-end p-2 align-items-center m-0  ">
+        <input class="form-check-input" type="checkbox" role="switch"  [(ngModel)]="isObserverMode" [checked]="isObserverMode" (change)="onToggleChange($event)">
+        <label class="form-check-label">Observer</label>
+    </div>
+    <div id="map" style="height: 500px;"></div>
+    </div>
+  </div>
+  
