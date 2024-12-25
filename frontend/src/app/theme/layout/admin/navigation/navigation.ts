@@ -32,7 +32,7 @@ const NavigationItems = [
         id: 'dashboard',
         title: 'Dashboard',
         type: 'item',
-        url: '/dashboard',
+        url: '/tracker',
         icon: 'feather icon-home',
         classes: 'nav-item'
       }
@@ -69,15 +69,6 @@ const NavigationItems = [
           }
         ]
       },
-      {
-        id: 'tracker',
-        title: 'Tracker',
-        type: 'item',
-        url: '/tracker',
-        classes: 'nav-item',
-        icon: 'feather icon-sidebar'
-      },
-  
     ]
   }
 ];
